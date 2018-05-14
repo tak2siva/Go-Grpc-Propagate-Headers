@@ -1,0 +1,9 @@
+FROM golang:1-alpine
+RUN apk add git --no-cache
+RUN go get -u google.golang.org/grpc
+RUN go get -u github.com/golang/protobuf/protoc-gen-go
+RUN go get -u github.com/grpc-ecosystem/go-grpc-middleware
+RUN mkdir $GOPATH/src/grpc_server
+ADD cmd $GOPATH/src/grpc_server/cmd
+ADD lib $GOPATH/src/grpc_server/lib
+RUN ls -l $GOPATH/src/grpc_server/

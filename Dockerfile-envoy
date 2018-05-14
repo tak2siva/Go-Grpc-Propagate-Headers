@@ -1,0 +1,2 @@
+FROM envoy:latest
+ADD config.yml .

@@ -1,0 +1,26 @@
+version: '3'
+services:
+  envoy:
+    image: envoyproxy/envoy:latest
+    volumes:
+      - ./config.json:/config.json
+    command: envoy -c config.json -l error
+    expose:
+      - "9901"
+    ports:
+      - "9000:9000"
+      - "9901:9901"
+  serverA:
+    image: pathao_go:latest
+    command: go run /go/src/grpc_server/cmd/serverA/main.go
+    expose:
+      - "7777"
+    ports:
+      - "7777:7777"
+  serverB:
+    image: pathao_go:latest
+    command: go run /go/src/grpc_server/cmd/serverB/main.go
+    expose:
+      - "7778"
+    ports:
+      - "7778:7778"
