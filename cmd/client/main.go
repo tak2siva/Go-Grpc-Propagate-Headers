@@ -26,5 +26,5 @@ func main()  {
 		log.Fatalf("could not ping: %v", err)
 	}
 
-	log.Printf("Response from server %s", r.Greeting)
+	log.Printf("Response from serverA %s", r.Greeting)
 }
